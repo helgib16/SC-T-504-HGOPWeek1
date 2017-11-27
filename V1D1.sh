@@ -15,9 +15,13 @@ read input;
 if [ "$input" = "y" ];
 	then 
 	echo "Installing git..."
-	git --version
-	sudo apt-get install git-core
-	echo "Installing sublime text editor 2..."
+#	git --version
+	sudo apt-get install git
+	echo "Installing sublime text editor 3..."
+
+	sudo add-apt-repository ppa:webupd8team/sublime-text-3 && \
+	sudo apt-get update && \
+	sudo apt-get install sublime-text-installer
 fi
 
 tt=$((($(date +%s%N) - $ts)/1000000))
