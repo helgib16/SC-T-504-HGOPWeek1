@@ -8,11 +8,12 @@ TODO: short description
 
 ## What is the difference between:
 * Virtual Machine
-- Run guest OSs ontop of host OS, which require all dependencies for a package to run
+	- Run guest OSs ontop of host OS, which require all dependencies for a package to run
 * Docker Container
-- multiple containers share a single kernel, contain the package and the dependencies (image). 
+	- multiple containers share a single kernel, contain the package and the dependencies (image). 
 * Docker Image
-- Is the executable and it's dependencies to make sure they don't have to be installed on the host OS.
+	- Is the executable and it's dependencies to make sure they don't have to be installed on the host OS.
+
 [source: https://docs.docker.com/get-started/#container-diagram]
 
 ## What is docker-compose:
