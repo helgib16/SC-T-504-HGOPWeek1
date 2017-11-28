@@ -11,6 +11,16 @@ getTimeStamp (){
 ts=$(date +%s%N);
 getTimeStamp;
 
+#Create variables for logfiles
+	INSTALLLOG="Script-Success.log";
+	ERRORLOG="Script-Error.log";
+
+#Remove function for successfile (remove if exists)
+removeSuccessLog(){
+	if [ -e $INSTALLLOG ]; then
+		rm $INSTALLLOG;
+	fi
+}
 #Short welcome message and explanation for user running the script
 echo "Welcome $USER";
 echo "this script will install git and sublime text editor";
@@ -20,18 +30,17 @@ echo "are you sure you want to continue y/n?"
 read input;
 if [ "$input" = "y" ]; then 
 
-	#Create variables for logfiles
-	INSTALLLOG="Script-Success.log";
-	ERRORLOG="Script-Error.log";
 	echo "Installing git..."
 	#Installation instructions for git, logged with timestamp upon success,
 	#else (or) log an error with timestamp to the errorlog and exits.
 	sudo apt-get install git -y && echo "$(getTimeStamp) - Successfully installed git." >> $INSTALLLOG ||  ( echo "$(getTimeStamp) - Encountered an error while installing git" >> $ERRORLOG; exit 1; );
 
-	echo "Installing sublime text editor 3..."
+	echo "Installing sublime text editor 3...";
 	#Installation iinstructions for sublime text editor, logged with timestamp upon success,
 	#else (or) log an error with timestamp to the errorlog and exits.
-	sudo add-apt-repository ppa:webupd8team/sublime-text-3 && sudo apt-get update && sudo apt-get install sublime-text-installer -y && echo "$(getTimeStamp) - Successfully installed Sublime" >> $INSTALLLOG || ( echo "$(getTimeStamp) - Encountered an error while installing sublime" >> $ERRORLOG;  exit 1; );
+	sudo add-apt-repository ppa:webupd8team/sublime-text-3 && sudo apt-get update && sudo apt-get install sublime-text-installer -y && echo "$(getTimeStamp) - Successfully installed Sublime" >> $INSTALLLOG || ( echo "$(getTimeStamp) - Encountered an error while installing sublime" >> $ERRORLOG; $(removeSuccessLog); exit 1; );
+else 
+	echo "Aww, too bad, was looking forward to this.";
 fi;
 	
 #compute runtime and print.
