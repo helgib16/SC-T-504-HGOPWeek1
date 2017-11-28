@@ -16,18 +16,9 @@ if [ "$input" = "y" ]; then
 	INSTALLLOG="Script-Success.log";
 	ERRORLOG="Script-Error.log";
 	echo "Installing git..."
-	installGit() {
-		sudo apt-get install git -y;
-	};
 	sudo apt-get install git -y && echo "$(getTimeStamp) - Successfully installed git." >> $INSTALLLOG ||  ( echo "$(getTimeStamp) - Encountered an error while installing git" >> $ERRORLOG; exit 1; );
 
 	echo "Installing sublime text editor 3..."
-	installSublime(){
-		sudo add-apt-repository ppa:webupd8team/sublime-text-3 &&
-		sudo apt-get update &&
-		sudo apt-get install sublime-text-installer -y;
-	};
-
 	sudo add-apt-repository ppa:webupd8team/sublime-text-3 && sudo apt-get update && sudo apt-get install sublime-text-installer -y && echo "$(getTimeStamp) - Successfully installed Sublime" >> $INSTALLLOG || ( echo "$(getTimeStamp) - Encountered an error while installing sublime" >> $ERRORLOG;  exit 1; );
 fi;
 	
