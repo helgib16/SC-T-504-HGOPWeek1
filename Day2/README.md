@@ -4,23 +4,29 @@
 
 
 ## What is Docker?
-TODO: short description
+* Docker is the company driving the container movement. 
+* With the goal of enabling true independence between applications and infrastructure.
 
 ## What is the difference between:
 * Virtual Machine
-	- Run guest OSs ontop of host OS, which require all dependencies for a package to run
+	- Run guest OSs ontop of host OS, which require all dependencies for a package to run.
 * Docker Container
-	- multiple containers share a single kernel, contain the package and the dependencies (image). 
+	- Multiple containers share a single kernel, contain the package and the dependencies (image). 
 * Docker Image
 	- Is the executable and it's dependencies to make sure they don't have to be installed on the host OS.
 
 [source: https://docs.docker.com/get-started/#container-diagram]
 
 ## What is docker-compose:
-TODO: Short description
+* Docker Compose is a tool for defining and running multi-container Docker applications. 
+* Uses a single command to start all services from predefined configurations.
+
+[source: https://docs.docker.com/compose/overview/]
 
 ## Results
-* Docker image was created on a 
+* Got to know what Docker, Docker image, and Docker container are. 
+* Got to know what docker-compose is about. 
+* Completed a short tutorial that included all of these objects and features.
 
 ## Checklist
 # Part 1
