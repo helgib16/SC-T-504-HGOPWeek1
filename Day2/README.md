@@ -7,6 +7,8 @@
 * Docker is the company driving the container movement. 
 * With the goal of enabling true independence between applications and infrastructure.
 
+[source: https://www.docker.com/what-docker]
+
 ## What is the difference between:
 * Virtual Machine
 	- Run guest OSs ontop of host OS, which require all dependencies for a package to run.
