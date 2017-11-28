@@ -1,54 +1,35 @@
 #!/bin/bash
 # Basic bash script with walkthrough of installation 
 # of a text editor and git
-
+getTimeStamp (){
+	echo "$(date +%d.%m.%Y-%T)";
+};
 ts=$(date +%s%N);
-echo "$(date +%d.%m.%Y-%T)";
+getTimeStamp;
 echo "Welcome $USER";
 echo "this program will install git and sublime text editor";
 echo "System running: ";
 uname -a;
 echo "are you sure you want to continue y/n?"
 read input;
-if [ "$input" = "y" ];
-	then 
+if [ "$input" = "y" ]; then 
+	INSTALLLOG="Script-Success.log";
+	ERRORLOG="Script-Error.log";
 	echo "Installing git..."
 	installGit() {
-		sudo apt-get install git;
-	}
-#	git --version
-	#if [ installGit () ]
-	#	then
-	#	1>"logfile.txt";
-	#	echo "Successfully installed git"
-	#else
-	#	2>"errorfile.txt";
-	#	echo "Failed to install git, for more information check errorfile.txt"
-	#fi
-	#echo "Installing sublime text editor 3..."
+		sudo apt-get install git -y;
+	};
+	sudo apt-get install git -y && echo "$(getTimeStamp) - Successfully installed git." >> $INSTALLLOG ||  ( echo "$(getTimeStamp) - Encountered an error while installing git" >> $ERRORLOG; exit 1; );
+
+	echo "Installing sublime text editor 3..."
 	installSublime(){
 		sudo add-apt-repository ppa:webupd8team/sublime-text-3 &&
 		sudo apt-get update &&
-		sudo apt-get install sublime-text-installer;
-	}
-	#if [ installSublime () ]
-	#then 
-	#	1>"logfile.txt";
-	#	echo "Successfully installed Sublime";
-	#else 
-	#	2>"errorfile.txt";
-	#	echo "Failed to install Sublime, for more information check errorfile.txt";
-#	if [ sudo add-apt-repository ppa:webupd8team/sublime-text-3 && \
-#		sudo apt-get update && \
-#		sudo apt-get install sublime-text-installer ]; then
-#		echo "All apps installed";
+		sudo apt-get install sublime-text-installer -y;
+	};
+
+	sudo add-apt-repository ppa:webupd8team/sublime-text-3 && sudo apt-get update && sudo apt-get install sublime-text-installer -y && echo "$(getTimeStamp) - Successfully installed Sublime" >> $INSTALLLOG || ( echo "$(getTimeStamp) - Encountered an error while installing sublime" >> $ERRORLOG;  exit 1; );
+fi;
 	
-
-#	else
-#		echo "Installing encountered an error"
-#	fi
-
-fi
-
-tt=$((($(date +%s%N) - $ts)/1000000))
+tt=$((($(date +%s%N) - $ts)/1000000));
 echo "Time to execute: $tt milliseconds";
