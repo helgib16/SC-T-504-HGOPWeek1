@@ -1,10 +1,13 @@
 version: "2"
 services:
-    my_page_counter_app:
+    my_page_counter_and_item_storage_app:
       image: helgib16/week1:part2
       ports:
        - "3000:3000"
       links:
        - my_redis_container
+       #- postgres_container
     my_redis_container:
       image: redis
+    #postgres_container:
+     # image: 
